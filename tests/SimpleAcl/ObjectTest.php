@@ -2,7 +2,7 @@
 namespace SimpleAclTest;
 
 use PHPUnit_Framework_TestCase;
-use SimpleAcl\Object;
+use SimpleAcl\BaseObject;
 
 /**
  * Class ObjectTest
@@ -14,7 +14,7 @@ class ObjectTest extends PHPUnit_Framework_TestCase
   public function testName()
   {
     /** @var Object $object */
-    $object = $this->getMockForAbstractClass('SimpleAcl\Object', array('TestName'));
+    $object = $this->getMockForAbstractClass('SimpleAcl\BaseObject', array('TestName'));
 
     self::assertSame($object->getName(), 'TestName');
     $object->setName('NewName');

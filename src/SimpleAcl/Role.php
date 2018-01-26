@@ -6,6 +6,6 @@ namespace SimpleAcl;
  *
  * @package SimpleAcl
  */
-class Role extends Object
+class Role extends BaseObject
 {
 }

@@ -1,7 +1,7 @@
 <?php
 namespace SimpleAcl\Object;
 
-use SimpleAcl\Object;
+use SimpleAcl\BaseObject;
 
 /**
  * Implement common function for Role and Resources.
@@ -27,7 +27,7 @@ abstract class ObjectAggregate
    */
   protected function removeObject($objectName)
   {
-    if ($objectName instanceof Object) {
+    if ($objectName instanceof BaseObject) {
       $objectName = $objectName->getName();
     }
 
@@ -55,16 +55,16 @@ abstract class ObjectAggregate
    */
   protected function setObjects($objects)
   {
-    /** @var \SimpleAcl\Object $object */
+    /** @var \SimpleAcl\BaseObject $object */
     foreach ($objects as $object) {
       $this->addObject($object);
     }
   }
 
   /**
-   * @param \SimpleAcl\Object $object
+   * @param \SimpleAcl\BaseObject $object
    */
-  protected function addObject(Object $object)
+  protected function addObject(BaseObject $object)
   {
     if ($this->getObject($object)) {
       return;
@@ -80,7 +80,7 @@ abstract class ObjectAggregate
    */
   protected function getObject($objectName)
   {
-    if ($objectName instanceof Object) {
+    if ($objectName instanceof BaseObject) {
       $objectName = $objectName->getName();
     }
 

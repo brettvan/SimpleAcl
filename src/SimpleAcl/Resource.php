@@ -6,6 +6,6 @@ namespace SimpleAcl;
  *
  * @package SimpleAcl
  */
-class Resource extends Object
+class Resource extends BaseObject
 {
 }

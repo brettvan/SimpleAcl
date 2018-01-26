@@ -9,7 +9,7 @@ use SimpleAcl\Object\RecursiveIterator;
  *
  * @package SimpleAcl
  */
-abstract class Object implements IteratorAggregate
+abstract class BaseObject implements IteratorAggregate
 {
   /**
    * Hold the name of object.
