@@ -6,7 +6,7 @@ use RecursiveIterator as ArrayIterator;
 /**
  * Used to iterate by Roles and Resources hierarchy.
  *
- * @package SimpleAcl\Object
+ * @package SimpleAcl\BaseObject
  */
 class RecursiveIterator implements ArrayIterator
 {

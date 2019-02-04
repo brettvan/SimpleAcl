@@ -27,6 +27,11 @@ class RuleResult
   protected $needResourceName;
 
   /**
+   * @var int
+   */
+  protected $priority;
+
+  /**
    * @var string
    */
   protected $id;
@@ -42,18 +47,28 @@ class RuleResult
   protected $isInit = false;
 
   /**
-   * @param Rule   $rule
-   * @param string $needRoleName
-   * @param string $needResourceName
+   * @param Rule $rule
+   * @param int  $priority
+   * @param      $needRoleName
+   * @param      $needResourceName
    */
-  public function __construct(Rule $rule, $needRoleName, $needResourceName)
+  public function __construct(Rule $rule, $priority, $needRoleName, $needResourceName)
   {
     static $idCountRuleResultSimpleAcl = 1;
 
     $this->id = $idCountRuleResultSimpleAcl++;
     $this->rule = $rule;
+    $this->priority = $priority;
     $this->needRoleName = $needRoleName;
     $this->needResourceName = $needResourceName;
+  }
+
+  /**
+   * @param int $priority
+   */
+  public function setPriority($priority)
+  {
+    $this->priority = $priority;
   }
 
   /**
@@ -91,6 +106,22 @@ class RuleResult
     }
 
     return $this->action;
+  }
+
+  /**
+   * @return int
+   */
+  public function getPriority()
+  {
+    return $this->priority;
+  }
+
+  /**
+   * @return int
+   */
+  public function getRulePriority()
+  {
+    return $this->getRule()->getPriority();
   }
 
   /**

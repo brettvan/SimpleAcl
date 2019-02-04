@@ -6,7 +6,7 @@ use SimpleAcl\BaseObject;
 /**
  * Implement common function for Role and Resources.
  *
- * @package SimpleAcl\Object
+ * @package SimpleAcl\BaseObject
  */
 abstract class ObjectAggregate
 {
@@ -98,12 +98,31 @@ abstract class ObjectAggregate
    */
   protected function getObjectNames()
   {
+    // Added sortability due to lack of encapsulation, and the last one wins so I
+    // had to make some determination to enforce application logic order
     $names = array();
+    $pnames = array();
+    $sortable = false;
 
-    foreach ($this->objects as $object) {
-      $names[] = $object->getName();
+    foreach ($this->objects as $object) {    
+      if (method_exists($object, 'getPriority')) {
+        $sortable = true;
+        $n = array();
+        $n['name'] = $object->getName();
+        $n['priority'] = $object->getPriority();
+        $pnames[] = $n;
+      } else {
+          $names[] = $object->getName();
+      }
     }
-
+    if ($sortable) {
+      usort($pnames, function ($a, $b) {
+        return $a['priority'] <=> $b['priority'];
+      });
+      foreach ($pnames as $pn) {
+        $names[]= $pn['name'];
+      }
+    }
     return $names;
   }
 }

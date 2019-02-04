@@ -3,3 +3,7 @@
 /vendor
 tmp
 composer.lock
+
+src/SimpleAcl/Object\.php
+
+src/SimpleAcl/SplPriorityQueue\.php
