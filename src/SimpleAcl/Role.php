@@ -1,6 +1,7 @@
 <?php
 namespace SimpleAcl;
 
+
 /**
  * Represent Roles in ACL.
  *
@@ -8,4 +9,5 @@ namespace SimpleAcl;
  */
 class Role extends BaseObject
 {
+  
 }
