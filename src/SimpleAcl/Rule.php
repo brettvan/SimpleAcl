@@ -237,7 +237,7 @@ class Rule
         if (
             null === $role
             ||
-            ($role && $role->name === $needRoleName)
+            ($role && $role->getName() === $needRoleName)
         ) {
           $roleNameMatched = true;
         } else {
@@ -249,7 +249,7 @@ class Rule
           if (
               null === $resource
               ||
-              ($resource && $resource->name === $needResourceName)
+              ($resource && $resource->getName() === $needResourceName)
           ) {
             $resourceNameMatched = true;
           } else {
@@ -263,7 +263,7 @@ class Rule
               &&
               $resourceNameMatched === true
           ) {
-            $ruleResult = new RuleResult($this, $needRoleName, $needResourceName);
+            $ruleResult = new RuleResult($this, 0, $needRoleName, $needResourceName);
           }
 
           if ($ruleResult) {
